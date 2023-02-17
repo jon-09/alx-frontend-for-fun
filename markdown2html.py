@@ -2,24 +2,28 @@
 import sys
 from os.path import exists
 
-"""A markdown to html file
-    Args:
-        Arg 1: Markdown file
-        Arg 2: output file name (HTML)
-    """
+"""
+A markdown to html file
+    arg 1: Markdown file
+    arg 2: output file name (HTML)
+"""
 
 markdownHeader = {'#': '<h1> </h1>', '##': '<h2> </h2>', '###': '<h3> </h3>',
                   '####': '<h4> </h4>', '#####': '<h5> </h5>', '######': '<h6> </h6>'}
 
 if __name__ == '__main__':
 
-    """Check if number of arguments == 2"""
+    """
+    Check if number of arguments == 2
+    """
 
     if len(sys.argv) != 3:
         sys.stderr.write("Usage: ./markdown2html.py README.md README.html\n")
         exit(1)
 
-    """Check if input file is a correct markdown file"""
+    """
+    Check if input file is a correct markdown file
+    """
     if "." in sys.argv[1]:
         newArr = sys.argv[1].split('.')
         if len(newArr) != 2:
@@ -28,12 +32,16 @@ if __name__ == '__main__':
         if newArr[1] != "md":
             sys.stderr.write('First argument must a markdown file\n')
 
-    """Check if markdown file exist"""
+    """
+    Check if markdown file exist
+    """
     if exists(sys.argv[1]) == False:
         sys.stderr.write('Missing {}\n'.format(sys.argv[1]))
         exit(1)
 
-    """Opening the markdown file for file operations"""
+    """
+    Opening the markdown file for file operations
+    """
 
     with open(sys.argv[1]) as markdown:
         line = True
